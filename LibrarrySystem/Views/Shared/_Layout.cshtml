@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LibrarrySystem</title>
 
-    @*<link rel="stylesheet" href="~/css/preloader.css" />*@
-    @*<link rel="stylesheet" href="~/css/pagestyle.scss" />
-    <link rel="stylesheet" href="~/css//sidebarstyle.scss" />*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
+    <link href="~/css/sidebar.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LibrarrySystem.styles.css" asp-append-version="true" />
@@ -23,41 +21,34 @@
                 <img src="~/lib/lib.jpg" class="profile_image" alt="" />
                 <h4>HNHS Librarry System</h4>
             </center>
-            <ul>
-                <li>
-                    <a asp-action="Index" asp-controller="Home"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
-                </li>
-                <li>
-                    <a asp-action="Index" asp-controller="Home"><i class="fa-solid fa-tent-arrow-left-right"></i><span>Transaction</span></a>
-                </li>
-                <li>
-                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-book"></i><span>Books</span></a>
-                </li>
-                <li>
-                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-user-pen"></i><span>Students</span></a>
-                </li>
-                <li>
-                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-file-lines"></i><span>Reports</span></a>
-                </li>
-                <li>
-                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-gear"></i><span>Maintenance</span></a>
-                </li>
-            </ul>
+
+            <a asp-action="Index" asp-controller="Home"><i class="fas fa-gauge"></i><span>Dashboard</span></a>
+            <a asp-action="Index" asp-controller="Home"><i class="fas fa-tent-arrow-left-right"></i><span>Transaction</span></a>
+            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-book"></i><span>Books</span></a>
+            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-user-pen"></i><span>Students</span></a>
+            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-file-lines"></i><span>Reports</span></a>
+            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-gear"></i><span>Maintenance</span></a>
+            
         </div>
 
         <div class="main_content">
+
             <div class="header">
                 HINDANG NATIONAL HIGH SCHOOL
                 <div style="float: right">Logout</div>
             </div>
+
             <main role="main" class="body_container">
                 @RenderBody()
             </main>
             <hr />
+
             <footer>
                 <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             </footer>
+
         </div>
+
     </div>
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
