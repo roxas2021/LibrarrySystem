@@ -17,50 +17,49 @@
 </head>
 <body>
 
-    <header>
-        <div class="left_area">
-            <h3>Hindang National HS</h3>
+    <div class="wrapper">
+        <div class="sidebar">
+            <center>
+                <img src="~/lib/lib.jpg" class="profile_image" alt="" />
+                <h4>HNHS Librarry System</h4>
+            </center>
+            <ul>
+                <li>
+                    <a asp-action="Index" asp-controller="Home"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Home"><i class="fa-solid fa-tent-arrow-left-right"></i><span>Transaction</span></a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-book"></i><span>Books</span></a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-user-pen"></i><span>Students</span></a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-file-lines"></i><span>Reports</span></a>
+                </li>
+                <li>
+                    <a asp-action="Login" asp-controller="Maintenance"><i class="fa-solid fa-gear"></i><span>Maintenance</span></a>
+                </li>
+            </ul>
         </div>
-        <div class="right_area">
-            <a href="#" class="logout_btn">Logout</a>
+
+        <div class="main_content">
+            <div class="header">
+                HINDANG NATIONAL HIGH SCHOOL
+                <div style="float: right">Logout</div>
+            </div>
+            <main role="main" class="body_container">
+                @RenderBody()
+            </main>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
         </div>
-    </header>
-
-    <div class="sidebar">
-        <center>
-            <img src="~/lib/lib.jpg" class="profile_image" alt="" />
-            <h4>Librarry System</h4>
-        </center>
-
-        <a asp-action="Index" asp-controller="Home">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-        <a asp-action="Index" asp-controller="Home">
-            <i class="fa-solid fa-tent-arrow-left-right"></i>
-            <span>Transaction</span>
-        </a>
-        <a asp-action="Login" asp-controller="Maintenance">
-            <i class="fa-solid fa-info-circle"></i>
-            <span>About</span>
-        </a>
-        <a asp-action="Privacy" asp-controller="Home">
-            <i class="fa-solid fa-address-card"></i>
-            <span>Contact</span>
-        </a>
-    </div>
-
-    <div class="container-fluid">
-        <main role="main" class="body_container" >
-            @RenderBody()
-        </main>
     </div>
     
-            @*<footer class="border-top footer text-muted">
-                <div class="container">
-                    &copy; 2022 - LibrarrySystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </div>
-            </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
