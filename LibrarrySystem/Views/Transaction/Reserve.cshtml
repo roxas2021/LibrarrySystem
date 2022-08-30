@@ -6,5 +6,62 @@
 
 
 <div class="container mt-4">
-    <h1>Reserve Transaction</h1>
+    <div class="transaction">
+        <div class="row trans_top">
+            <div class="col-sm-8">
+                <button class="rounded p-1">ADD NEW <i class="fa fa-plus"></i></button>
+            </div>
+            <div class="col-sm-4">
+                <div class="search-container">
+                    <form asp-action="" method="get">
+                        <input type="text" placeholder="Search" name="search" />
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row p-2 border mt-4 rounded">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar tableFixHead">
+                <table class="table table-striped">
+                    <thead class="thead-dark" style="height:40px;">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
+ <script>
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+    searchButton.addEventListener('click', () => {
+        const inputValue = searchInput.value;
+        alert(inputValue);
+    });
+ </script>

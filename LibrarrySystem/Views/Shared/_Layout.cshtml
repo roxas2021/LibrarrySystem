@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
+    <link rel="stylesheet" href="~/css/transaction.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -26,7 +27,7 @@
                 <li><a asp-action="Index" asp-controller="Home"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
 
                 <li class="sub-list">
-                    <a href="#" class="sub-btn"><i class="fas fa-book"></i><span>Transaction <i class="fas fa-angle-right dropdown"></i></span></a>
+                    <a href="#" class="sub-btn"><i class="fas fa-exchange"></i><span>Transaction <i class="fas fa-angle-right dropdown"></i></span></a>
                     <ul class="list-group sub-menu">
                         <li>
                             <a asp-action="Index" asp-controller="Transaction" class="sub-item">Borrow</a>
@@ -38,7 +39,16 @@
 
                 <li><a asp-action="Index" asp-controller="Books"><i class="fas fa-book"></i><span>Books</span></a></li>
                 <li><a asp-action="Index" asp-controller="Students"><i class="fas fa-user-pen"></i><span>Students</span></a></li>
-                <li><a asp-action="Index" asp-controller="Reports"><i class="fas fa-file-lines"></i><span>Reports</span></a></li>
+                <li class="sub-list">
+                    <a href="#" class="sub-btn"><i class="fas fa-file-lines"></i><span>Reports <i class="fas fa-angle-right dropdown"></i></span></a>
+                    <ul class="list-group sub-menu">
+                        <li>
+                            <a asp-action="Index" asp-controller="Reports" class="sub-item">Students</a>
+                            <a asp-action="Transaction" asp-controller="Reports" class="sub-item">Transaction</a>
+                            <a asp-action="Books" asp-controller="Reports" class="sub-item">Books</a>
+                        </li>
+                    </ul>
+                </li>
                 <li><a asp-action="Index" asp-controller="Maintenance"><i class="fas fa-gear"></i><span>Maintenance</span></a></li>
             </ul>
         </div>
@@ -46,8 +56,14 @@
         <div class="main_content">
 
             <div class="header">
-                <a>DASHBOARD</a>
-                <div style="float: right">Logout</div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a>DASHBOARD</a>
+                    </div>
+                    <div class="col-sm-6 d-flex justify-content-end">
+                        <a asp-action="Login" asp-controller="Maintenance">LOGOUT</a>
+                    </div>
+                </div>
             </div>
 
             <main role="main" class="body_container p-4">

@@ -8,5 +8,15 @@ namespace LibrarrySystem.Controllers
         {
             return View();
         }
+
+        public IActionResult Transaction()
+        {
+            return View();
+        }
+
+        public IActionResult Books()
+        {
+            return View();
+        }
     }
 }

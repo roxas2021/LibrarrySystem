@@ -1,0 +1,87 @@
+﻿
+.transaction .trans_top .search-container {
+    float: right;
+}
+
+    .transaction .trans_top .search-container input[type=text] {
+        padding: 6px;
+        font-size: 17px;
+        height: 30px;
+    }
+
+    .transaction .trans_top .search-container button {
+        float: right;
+        padding: 6px;
+        background: #2F323A;
+        font-size: 17px;
+        cursor: pointer;
+        height: 30px;
+    }
+
+        .transaction .trans_top .search-container button:hover {
+            background: white;
+        }
+
+    .transaction .trans_top .search-container i {
+        color: #ccc;
+        font-size: 20px;
+    }
+
+    .transaction .trans_top .search-container i:hover {
+        color: blue;
+    }
+
+@media screen and (max-width: 600px) {
+    .transaction .trans_top .search-container {
+        float: none;
+    }
+
+        .transaction .trans_top .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 410px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+table {
+    width: 100%;
+}
+
+thead, tbody, tr, td, th {
+    display: block;
+}
+
+    tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    thead th {
+        height: 30px;
+    }
+
+tbody {
+    height: 330px;
+    overflow-y: auto;
+}
+
+
+    tbody td, thead th {
+        width: 25%;
+        float: left;
+    }
