@@ -38,7 +38,6 @@ body {
     }
 
 .body_container {
-    padding: 5px;
     height: 83vh;
     transition: 0.5s;
     background-color: #fff;

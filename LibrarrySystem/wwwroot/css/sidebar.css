@@ -7,14 +7,14 @@
 }
 
     .sidebar a {
+        color: #ccc;
+        text-decoration: none;
         display: block;
         width: 100%;
         line-height: 50px;
-        color: #ccc;
         padding-left: 25px;
         box-sizing: border-box;
         border-top: 1px solid rgba(255,255,255,0.1);
-        text-decoration: none;
     }
 
 .sidebar h2 {
@@ -44,4 +44,44 @@
         color: #fff;
         margin-top: 0;
         margin-bottom: 20px;
+    }
+
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+}
+
+    .sidebar a .dropdown {
+        position: absolute;
+        right: 0;
+        margin: 20px;
+        transition: 0.5s ease;
+    }
+
+    .sidebar  .sub-menu {
+        display:none;
+    }
+
+.sidebar .sub-list .sub-menu a {
+    padding-left: 60px;
+}
+
+.sidebar .sub-list a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    line-height: 50px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+    .sidebar .sub-list a:hover {
+        color: blue;
+    }
+
+    .rotate {
+        transform: rotate(90deg);
     }

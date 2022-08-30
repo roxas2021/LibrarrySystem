@@ -7,8 +7,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
-    <link href="~/css/sidebar.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LibrarrySystem.styles.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -21,14 +21,26 @@
                 <img src="~/lib/lib.jpg" class="profile_image" alt="" />
                 <h6>LIBRARRY MANAGEMENT SYSTEM</h6>
             </center>
+            <ul class="list-group">
 
-            <a asp-action="Index" asp-controller="Home"><i class="fas fa-gauge"></i><span>Dashboard</span></a>
-            <a asp-action="Index" asp-controller="Home"><i class="fas fa-tent-arrow-left-right"></i><span>Transaction</span></a>
-            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-book"></i><span>Books</span></a>
-            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-user-pen"></i><span>Students</span></a>
-            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-file-lines"></i><span>Reports</span></a>
-            <a asp-action="Login" asp-controller="Maintenance"><i class="fas fa-gear"></i><span>Maintenance</span></a>
-            
+                <li><a asp-action="Index" asp-controller="Home"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+
+                <li class="sub-list">
+                    <a href="#" class="sub-btn"><i class="fas fa-book"></i><span>Transaction <i class="fas fa-angle-right dropdown"></i></span></a>
+                    <ul class="list-group sub-menu">
+                        <li>
+                            <a asp-action="Index" asp-controller="Transaction" class="sub-item">Borrow</a>
+                            <a asp-action="Reserve" asp-controller="Transaction" class="sub-item">Reserve</a>
+                            <a asp-action="Return" asp-controller="Transaction" class="sub-item">Return</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a asp-action="Index" asp-controller="Books"><i class="fas fa-book"></i><span>Books</span></a></li>
+                <li><a asp-action="Index" asp-controller="Students"><i class="fas fa-user-pen"></i><span>Students</span></a></li>
+                <li><a asp-action="Index" asp-controller="Reports"><i class="fas fa-file-lines"></i><span>Reports</span></a></li>
+                <li><a asp-action="Index" asp-controller="Maintenance"><i class="fas fa-gear"></i><span>Maintenance</span></a></li>
+            </ul>
         </div>
 
         <div class="main_content">
@@ -38,7 +50,7 @@
                 <div style="float: right">Logout</div>
             </div>
 
-            <main role="main" class="body_container">
+            <main role="main" class="body_container p-4">
                 @RenderBody()
             </main>
 
@@ -54,5 +66,14 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.sub-btn').click(function(){
+                $(this).next('.sub-menu').slideToggle();
+                $(this).find('.dropdown').toggleClass('rotate');
+            });
+        });
+    </script>
 </body>
 </html>

@@ -24,6 +24,11 @@ namespace LibrarrySystem.Controllers
             return View();
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult LoginUser([Bind] LoginData data)
         {
             var account = accverify.VerifyAccount(data.UserID, data.Password);
