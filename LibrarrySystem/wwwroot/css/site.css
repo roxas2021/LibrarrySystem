@@ -21,6 +21,7 @@ body {
  .main_content {
         width: 100%;
         margin-left: 250px;
+        height: 100vh;
     }
 
 .main_content .header {
@@ -30,14 +31,19 @@ body {
             border-bottom: 1px solid #e0e4e8;
         }
 
- .main_content .header a {
-                background: #fff;
-                color: #717171;
-            }
+    .main_content .header a {
+        background: #fff;
+        color: #717171;
+        font-size: 20px;
+    }
 
 .body_container {
     padding: 5px;
-    height: 100vh;
+    height: 83vh;
     transition: 0.5s;
     background-color: #fff;
+}
+
+.dashboard .dashbtn {
+    background-color: #2F323A;
 }

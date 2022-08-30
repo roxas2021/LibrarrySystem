@@ -19,7 +19,7 @@
         <div class="sidebar">
             <center>
                 <img src="~/lib/lib.jpg" class="profile_image" alt="" />
-                <h4>HNHS Librarry System</h4>
+                <h6>LIBRARRY MANAGEMENT SYSTEM</h6>
             </center>
 
             <a asp-action="Index" asp-controller="Home"><i class="fas fa-gauge"></i><span>Dashboard</span></a>
@@ -34,17 +34,16 @@
         <div class="main_content">
 
             <div class="header">
-                HINDANG NATIONAL HIGH SCHOOL
+                <a>DASHBOARD</a>
                 <div style="float: right">Logout</div>
             </div>
 
             <main role="main" class="body_container">
                 @RenderBody()
             </main>
-            <hr />
 
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <footer class="d-flex justify-content-center border">
+                <p style="padding-top: 8px">&copy; @DateTime.Now.Year - Librarry Management System (Ferdinand Roxas)</p>
             </footer>
 
         </div>

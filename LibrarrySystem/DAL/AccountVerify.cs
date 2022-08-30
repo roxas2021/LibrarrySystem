@@ -3,9 +3,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
 using Dapper;
-using LibrarrySystem.DAL;
 
-namespace LibrarrySystem.ServicesController
+namespace LibrarrySystem.DAL
 {
     public class AccountVerify
     {
