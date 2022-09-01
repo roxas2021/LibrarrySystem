@@ -1,66 +1,159 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<MODELS.T_UserMaster>
 
 <div class="container mt-4">
     <div class="transaction">
         <div class="row trans_top">
             <div class="col-sm-8">
-                <button class="rounded p-1">ADD NEW <i class="fa fa-plus"></i></button>
+                <button class="px-2 btn btn-outline-dark" data-toggle="modal" data-target="#Addnew" onclick="openModal()" type="button">ADD NEW  <i class="fa fa-plus"></i></button>
             </div>
+
+            <div class="modal fade" id="AddnewRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        
+                        <div class="modal-body">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">ADD NEW USER</h5>
+                            </div>
+                            <form class="mt-2">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-sm-4 mt-2" style="border-bottom: none; height:40px"><h6>User ID</h6></td>
+                                            <td class="col-sm-4" style="border-bottom: none; height:40px">
+                                                <input id="userid" type="text" class="form-control newradius" onclick="hide_alert()">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-4 mt-2" style="border-bottom: none; height:40px"><h6>Password</h6></td>
+                                            <td class="col-sm-8" style="border-bottom: none; height:40px">
+                                                <input id="password" type="text" class="form-control newradius" onclick="hide_alert()">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-4 mt-2" style="border-bottom: none; height:40px"><h6>Name</h6></td>
+                                            <td class="col-sm-8" style="border-bottom: none; height:40px">
+                                                <input id="name" type="text" class="form-control newradius" onclick="hide_alert()">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-4 mt-2" style="border-bottom: none; height:40px" >
+                                                <h6>UserPosition</h6>
+                                            </td>
+                                            <td class="col-sm-8" style="border-bottom: none; height:40px">
+                                                <input id="position" type="text" class="form-control newradius" onclick="hide_alert()">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-4 mt-2" style="border-bottom: none; height:40px">
+                                                <h6>UserEmail</h6>
+                                            </td>
+                                            <td class="col-sm-8" style="border-bottom: none; height:40px">
+                                                <input id="email" type="text" class="form-control newradius" onclick="hide_alert()">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-4 mt-2" style="border-bottom: none; height:40px"><h6>Date</h6></td>
+                                            <td class="col-sm-8" style="border-bottom: none; height:40px">
+                                                <input id="date_created" type="date" class="form-control newradius" onclick="hide_alert()">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="alert alert-danger" role="alert" id="danger_alert" style="display:none">
+                                    <a id="text_alert">This is a danger alert—check it out!</a>
+                                </div>
+                                <div class="alert alert-success" role="alert" id="success_alert" style="display:none">
+                                    <a id="text_success_alert">This is a danger alert—check it out!</a>
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-dismiss="modal" onclick="closeModal()">Close</button>
+                                <button type="button" class="btn btn-outline-primary" onclick="InsertData()">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-sm-4">
                 <div class="search-container">
                     <form asp-action="" method="get">
                         <input type="text" placeholder="Search" name="search" />
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
+                    @*<div class="input-group">
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </div>*@
                 </div>
             </div>
+
         </div>
         <div class="row p-2 border mt-4 rounded">
             <div class="table-wrapper-scroll-y my-custom-scrollbar tableFixHead">
-                <table class="table table-striped">
-                    <thead class="thead-dark" style="height:40px;">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>fat</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div clclass="maintenance">
+                    <table class="table table-hover">
+                        <thead class="thead-dark" style="height:40px;">
+                            <tr>
+                                <th class="col-sm-1">No.</th>
+                                <th class="col-sm-2">ID</th>
+                                <th class="col-sm-3">Name</th>
+                                <th class="col-sm-2">Position</th>
+                                <th class="col-sm-2">Date Created</th>
+                                <th class="col-sm-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                if (Model != null && Model.Count > 0)
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.Umt_UserStatus == "A")
+                                        {
+                                            <tr>
+                                                <td class="col-sm-1">@Model.Count</td>
+                                                <td class="col-sm-2">@item.Umt_UserID</td>
+                                                <td class="col-sm-3">@item.Umt_UserName</td>
+                                                <td class="col-sm-2">@item.Umt_UserPosition</td>
+                                                <td class="col-sm-2">@item.Umt_DateCreated</td>
+                                                <td class="col-sm-2">
+                                                    <button class="px-2 btn btn-outline-dark" type="button" onclick="openModal()"><i class="fa fa-edit"></i></button>
+                                                    <button class="px-2 btn btn-outline-dark" type="button"><i class="fa fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
- <script>
-    const searchButton = document.getElementById('search-button');
-    const searchInput = document.getElementById('search-input');
-    searchButton.addEventListener('click', () => {
-        const inputValue = searchInput.value;
-        alert(inputValue);
-    });
- </script>
+<script src="~/js/maintenancecontroller.js"></script>
+
+<script type='text/javascript'>
+    function openModal() {
+        $('#AddnewRecord').modal('show');
+        $("#userid").val('');
+        $("#password").val('');
+        $("#name").val('');
+        $("#position").val('');
+        $("#email").val('');
+        $("#danger_alert").css({ "display": "none" });
+        $("#success_alert").css({ "display": "none" });
+    }
+    function closeModal() {
+        $('#AddnewRecord').modal('hide');
+    }
+
+    function hide_alert() {
+        $("#danger_alert").css({ "display": "none" });
+    }
+
+</script>

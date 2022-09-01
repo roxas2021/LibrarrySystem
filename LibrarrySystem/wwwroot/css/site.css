@@ -29,9 +29,8 @@ body {
         background: #fff;
         color: #717171;
         border-bottom: 1px solid #e0e4e8;
-        position: fixed;
-        height: 60px;
-        width: 83.5%;
+        height: 8vh;
+        width: 100%;
     }
 
         .main_content .header a {
@@ -42,12 +41,20 @@ body {
         }
 
 .body_container {
-    margin-top: 60px;
-    height: 84.5vh;
+    height: 87vh;
     transition: 0.5s;
     background-color: #fff;
 }
 
 .dashboard .dashbtn {
     background-color: #2F323A;
+}
+
+footer {
+    bottom: 0;
+    height: 5vh;
+}
+
+.modal_type {
+    display: none;
 }

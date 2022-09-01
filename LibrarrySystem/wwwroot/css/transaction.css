@@ -56,6 +56,7 @@
     display: block;
 }
 
+
 table {
     width: 100%;
 }
@@ -79,9 +80,11 @@ tbody {
     height: 330px;
     overflow-y: auto;
 }
+    tbody td {
+        height: 53px;
+    }
 
 
     tbody td, thead th {
-        width: 25%;
         float: left;
     }

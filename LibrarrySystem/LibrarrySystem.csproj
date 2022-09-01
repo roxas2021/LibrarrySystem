@@ -31,4 +31,8 @@
     <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MODELS\MODELS.csproj" />
+  </ItemGroup>
+
 </Project>

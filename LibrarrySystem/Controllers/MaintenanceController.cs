@@ -4,6 +4,7 @@ using LibrarrySystem.Models;
 using System.Data;
 using System.Configuration;
 using LibrarrySystem.DAL;
+using MODELS;
 
 namespace LibrarrySystem.Controllers
 {
@@ -24,9 +25,13 @@ namespace LibrarrySystem.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+
+            var li = accverify.GetAccountData();
+
+            return View(li);
         }
 
         public IActionResult LoginUser([Bind] LoginData data)
@@ -40,6 +45,25 @@ namespace LibrarrySystem.Controllers
 
             TempData["msg"] = "Invalid Account and Password. Please try again!.";
             return View("Login");
+        }
+
+        [HttpPost]
+        public JsonResult AddRecord(T_UserMaster data)
+        {
+            string message = string.Empty;
+            int isSuccess;
+
+            try
+            {
+                isSuccess = accverify.InsertUser(data);
+                message = "success";
+            }
+            catch(Exception ex)
+            {
+                isSuccess = 0;
+                message = ex.Message;
+            }
+            return Json(isSuccess);
         }
     }
 }
