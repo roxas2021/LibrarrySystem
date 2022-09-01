@@ -15,6 +15,7 @@ namespace LibrarrySystem.Controllers
 
         public IActionResult Index()
         {
+            TempData["HeaderTitle"] = "DASHBOARD";
             return View();
         }
 

@@ -6,6 +6,7 @@ namespace LibrarrySystem.Controllers
     {
         public IActionResult Index()
         {
+            TempData["HeaderTitle"] = "BOOKS";
             return View();
         }
     }

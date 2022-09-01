@@ -4,7 +4,8 @@
     <div class="transaction">
         <div class="row trans_top">
             <div class="col-sm-8">
-                <button class="px-2 btn btn-outline-dark" data-toggle="modal" data-target="#Addnew" onclick="openModal()" type="button">ADD NEW  <i class="fa fa-plus"></i></button>
+                <button class="px-2 btn btn-outline-dark" data-toggle="modal" data-target="#Addnew" onclick="openModal(this, 'Add')" type="button">ADD NEW  <i class="fa fa-plus"></i></button>
+                <a asp-action="Index" asp-controller="Maintenance" class="btn btn-outline-dark">REFRESH <i class="fa fa-refresh"></i></a>
             </div>
 
             <div class="modal fade" id="AddnewRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -79,7 +80,7 @@
             <div class="col-sm-4">
                 <div class="search-container">
                     <form asp-action="" method="get">
-                        <input type="text" placeholder="Search" name="search" />
+                        <input  type="text" placeholder="Search" name="search" />
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     @*<div class="input-group">
@@ -93,7 +94,7 @@
         <div class="row p-2 border mt-4 rounded">
             <div class="table-wrapper-scroll-y my-custom-scrollbar tableFixHead">
                 <div clclass="maintenance">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="UserTable">
                         <thead class="thead-dark" style="height:40px;">
                             <tr>
                                 <th class="col-sm-1">No.</th>
@@ -106,23 +107,28 @@
                         </thead>
                         <tbody>
                             @{
+                                int rowNo = 0;
+                            }
+                            @{
                                 if (Model != null && Model.Count > 0)
                                 {
-                                    @foreach (var item in Model)
+                                        @foreach (var item in Model)
                                     {
                                         if (item.Umt_UserStatus == "A")
                                         {
-                                            <tr>
-                                                <td class="col-sm-1">@Model.Count</td>
-                                                <td class="col-sm-2">@item.Umt_UserID</td>
-                                                <td class="col-sm-3">@item.Umt_UserName</td>
-                                                <td class="col-sm-2">@item.Umt_UserPosition</td>
-                                                <td class="col-sm-2">@item.Umt_DateCreated</td>
-                                                <td class="col-sm-2">
-                                                    <button class="px-2 btn btn-outline-dark" type="button" onclick="openModal()"><i class="fa fa-edit"></i></button>
-                                                    <button class="px-2 btn btn-outline-dark" type="button"><i class="fa fa-trash"></i></button>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td class="col-sm-1">@(rowNo += 1).</td>
+                                                    <td class="col-sm-2">@item.Umt_UserID</td>
+                                                    <td class="col-sm-3">@item.Umt_UserName</td>
+                                                    <td class="col-sm-2">@item.Umt_UserPosition</td>
+                                                    <td class="col-sm-2">@item.Umt_DateCreated.ToShortDateString()</td>
+                                                    <td class="col-sm-2">
+                                                        <button class="px-2 btn btn-outline-dark" type="button" onclick="openModal(this, 'Edit')"><i class="fa fa-edit"></i></button>
+                                                        <button class="px-2 btn btn-outline-dark btnDelete" type="button" onclick="deleteRecord()"><i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                    <td class="col-sm-2 d-none">@item.Umt_Password</td>
+                                                    <td class="col-sm-2 d-none">@item.Umt_UserEmail</td>
+                                                </tr>
                                         }
                                     }
                                 }
@@ -138,16 +144,47 @@
 <script src="~/js/maintenancecontroller.js"></script>
 
 <script type='text/javascript'>
-    function openModal() {
-        $('#AddnewRecord').modal('show');
-        $("#userid").val('');
-        $("#password").val('');
-        $("#name").val('');
-        $("#position").val('');
-        $("#email").val('');
-        $("#danger_alert").css({ "display": "none" });
-        $("#success_alert").css({ "display": "none" });
+    function openModal(text, type) {
+        if(type == "Add") {
+            $('#AddnewRecord').modal('show');
+            $("#exampleModalLongTitle").text("ADD NEW RECORD");
+            $("#userid").val('');
+            $("#password").val('');
+            $("#name").val('');
+            $("#position").val('');
+            $("#email").val('');
+            $("#danger_alert").css({ "display": "none" });
+            $("#success_alert").css({ "display": "none" });
+        }
+        else {
+            $('#AddnewRecord').modal('show');
+            $("#exampleModalLongTitle").text("EDIT RECORD");
+            $("#userid").prop('disabled', true);
+
+            var table = document.getElementById("UserTable"), rIndex;
+
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].onclick = function(){
+                    rIndex = this.rowIndex;
+
+                    var date = new Date(this.cells[4].innerHTML);
+                    var day = String(date.getDate()).padStart(2, '0');
+                    var month = String(date.getMonth() + 1).padStart(2, '0');
+                    var year = date.getFullYear();
+
+                    var newdate = [year, month, day].join('-');
+
+                    $("#userid").val(this.cells[1].innerHTML);
+                    $("#password").val(this.cells[6].innerHTML);
+                    $("#name").val(this.cells[2].innerHTML);
+                    $("#position").val(this.cells[3].innerHTML);
+                    $("#email").val(this.cells[7].innerHTML);
+                    $("#date_created").val(newdate);
+                };
+            }
+        }
     }
+
     function closeModal() {
         $('#AddnewRecord').modal('hide');
     }

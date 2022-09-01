@@ -29,6 +29,7 @@ namespace LibrarrySystem.Controllers
         public IActionResult Index()
         {
 
+            TempData["HeaderTitle"] = "MAINTENANCE";
             var li = accverify.GetAccountData();
 
             return View(li);
@@ -63,6 +64,31 @@ namespace LibrarrySystem.Controllers
                 isSuccess = 0;
                 message = ex.Message;
             }
+            return Json(isSuccess);
+        }
+
+        public IActionResult VerifyID(T_UserMaster data)
+        {
+            int isSuccess;
+
+            var result = accverify.VerifyID(data.Umt_UserID);
+            if(result != null)
+            {
+                isSuccess = 1;
+            }
+            else
+            {
+                isSuccess = 0;
+            }
+            return Json(isSuccess);
+        }
+
+        public IActionResult DeleteRecord(string userid)
+        {
+            int isSuccess;
+
+            isSuccess = accverify.DeleteRecord(userid);
+
             return Json(isSuccess);
         }
     }

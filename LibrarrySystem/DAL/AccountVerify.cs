@@ -18,7 +18,7 @@ namespace LibrarrySystem.DAL
 
             DynamicParameters param = new DynamicParameters();
             param.Add("@userid", id);
-            param.Add("userpass", pass);
+            param.Add("@userpass", pass);
 
             string query = "Select * From T_UserMaster Where Umt_UserID = @userid AND Umt_Password = @userpass";
 
@@ -74,6 +74,42 @@ namespace LibrarrySystem.DAL
                 return 0;
             }
         }
+        public T_UserMaster VerifyID(string id)
+        {
+            T_UserMaster userdata;
 
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@userid", id);
+
+            string query = "Select * From T_UserMaster Where Umt_UserID = @userid";
+
+            using (IDbConnection db = new SqlConnection(conn.ConString("LibrarryDB")))
+            {
+                userdata = db.Query<T_UserMaster>(query, param, commandType: CommandType.Text).FirstOrDefault();
+            }
+
+            return userdata;
+        }
+
+        public byte DeleteRecord(string id)
+        {
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@userID", id);
+
+                string query = "Delete From T_UserMaster Where Umt_UserID = @userID";
+
+                using (IDbConnection db = new SqlConnection(conn.ConString("LibrarryDB")))
+                {
+                    int result = db.Execute(query,param, commandType: CommandType.Text);
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
